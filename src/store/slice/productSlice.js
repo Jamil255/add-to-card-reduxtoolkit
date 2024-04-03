@@ -16,13 +16,13 @@ const productSlice = createSlice({
         })
         builder.addCase(fetchData.fulfilled, (state, action) => {
             state.loading = false;
-            state.products=action.payload.data
+            state.products = action.payload
 
         })
         builder.addCase(fetchData.rejected, (state, action) => {
             state.loading = false;
-            state.products=[]
-            state.error=true
+            state.products = []
+            state.error = true
 
         })
     }
@@ -32,7 +32,7 @@ export const fetchData = createAsyncThunk("product/fetchData", async (obj, { rej
 
     try {
         const respone = await axios.get('https://fakestoreapi.com/products')
-        return respone
+        return respone.data
     } catch (error) {
         return rejectWithValue(error)
     }

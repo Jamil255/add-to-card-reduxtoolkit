@@ -6,6 +6,7 @@ import Navabar from './components/Navabar'
 const App = () => {
   const { loading, products } = useSelector((state) => state.product)
   const dispatch = useDispatch()
+
   useEffect(() => {
     dispatch(fetchData())
   }, [])
@@ -13,19 +14,16 @@ const App = () => {
   return (
     <>
       <Navabar />
-
       <hr />
       {loading ? (
-        <h1>loading......</h1>
+        <h1>loading....</h1>
       ) : (
-        <div className="  d-flex gap-4  flex-wrap  mx-3">
-          {products?.map((prod) => {
-            return (
-              <div key={prod.id}>
-                <ProductCard product={prod} />
-              </div>
-            )
-          })}
+        <div className="d-flex gap-4 flex-wrap mx-3">
+          {products?.map((prod) => (
+            <div key={prod.id}>
+              <ProductCard product={prod} />
+            </div>
+          ))}
         </div>
       )}
     </>

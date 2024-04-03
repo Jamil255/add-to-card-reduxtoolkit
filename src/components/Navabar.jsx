@@ -1,6 +1,10 @@
 import React from 'react'
 import { HiClipboard } from 'react-icons/hi2'
+import { useSelector } from 'react-redux'
 const Navabar = () => {
+  const selector = useSelector((state) => state.addToCart)
+  console.log(selector)
+
   return (
     <>
       <div>
@@ -24,6 +28,7 @@ const Navabar = () => {
 
               <span>
                 <HiClipboard />
+                {selector.length === 0 ? '' : selector.length}
               </span>
             </div>
           </div>
